@@ -7,7 +7,6 @@ public class FirstPersonCameraController : SightController
 {
     public Camera Camera;
     public GameObject Player;
-    [SerializeField] private int _aimColliderLayerMask;
     [Header("Input")]
     [SerializeField] private InputActionAsset _playerActionsAsset;
     InputAction _lookDirectionInput;        //store the reference to the move action
@@ -22,14 +21,6 @@ public class FirstPersonCameraController : SightController
     Vector2 lookPosition;
     Vector2 lookRotation;
 
-    // [HideInInspector] public Vector3 LookingPoint;
-
-    private void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         GetInput();
@@ -65,7 +56,21 @@ public class FirstPersonCameraController : SightController
     void GetLookingPoint(){
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        if(Physics.Raycast(ray, out RaycastHit raycastHit,999f,_aimColliderLayerMask))
-            SightPoint = raycastHit.point;
+        Vector3 rayDirection = Vector3.zero;
+        if(Physics.Raycast(ray, out RaycastHit raycastHit,2000f))
+            rayDirection = raycastHit.point;
+        RaycastHit[] hits = Physics.RaycastAll(
+            Camera.main.transform.position,
+            rayDirection - Camera.main.transform.position,
+            2000f
+        );
+        foreach (RaycastHit hit in hits)
+        {
+            if(hit.transform.root != Camera.main.transform.root){
+                SightPoint = hit.point;
+                return;
+            }
+        }
+            // SightPoint = raycastHit.point;
     }
 }

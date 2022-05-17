@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454143d72a77eae43888366649dbdfd8, type: 3}
+  m_Name: AK-74u WeaponData
+  m_EditorClassIdentifier: 
+  weaponName: AK-74u
+  type: 2
+  prefab: {fileID: 5650678623838186102, guid: d50834053f6d1704d9405f17a7f43962, type: 3}
+  damage: 30
