@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: StepSoundEvent
   m_EditorClassIdentifier: 
   clips:
+  - {fileID: 8300000, guid: f6e6d2815c2aba14b845d9283cf5ef2c, type: 3}
   - {fileID: 8300000, guid: ad3b6e74d3f59fe4eaac08846cac18f7, type: 3}
+  - {fileID: 8300000, guid: 2f0e3d7cd43fba44aa313e54511468e0, type: 3}
+  - {fileID: 8300000, guid: 73744f222fa95a24e8704b55f58215fc, type: 3}
   volume:
     minValue: 0.90909094
     maxValue: 1

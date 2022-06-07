@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
 public class RagdollDeath : MonoBehaviour
@@ -6,12 +7,16 @@ public class RagdollDeath : MonoBehaviour
     [SerializeField] Collider _movementCollider;
     [SerializeField] Rigidbody _movementRigidbody;
     [SerializeField] GameObject _animatorObject;
+    [SerializeField] GameObject inputs;
     // [SerializeField] GameObject _rigObject;
     [SerializeField] GameObject[] _ragdollParts;
 
     public void ActiveRagdoll(){
         _movementCollider.enabled = false;
         Destroy(_movementRigidbody);
+        if(GetComponent<SoldierAI>()) Destroy(GetComponent<SoldierAI>());
+        if(GetComponent<NavMeshAgent>()) Destroy(GetComponent<NavMeshAgent>());
+        if(inputs) inputs.SetActive(false);
         // Destroy(_rigObject.gameObject);
         Component[] animationComponents = _animatorObject.GetComponents<Component>();
         for(int i=animationComponents.Length-1;i>=0;i--){

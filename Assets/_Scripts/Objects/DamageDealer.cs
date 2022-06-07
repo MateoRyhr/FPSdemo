@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class DamageDealer : MonoBehaviour
 {
     public float DamageAmount;
-
+    public abstract bool TakeDamageCondition(GameObject other);
     // private void Awake() {
     //     _damageTrigger = GetComponent<Collider>();
     // }

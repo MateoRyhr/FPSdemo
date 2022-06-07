@@ -1,4 +1,4 @@
-using System;
+// using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,7 +7,9 @@ using TMPro;
 public enum GameState{
     InGame,
     MainMenu,
-    PauseMenu
+    PauseMenu,
+    CreateGameMenu,
+    SelectTeamMenu
 }
 
 public class GameManager : MonoBehaviour
@@ -20,7 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameMode[] gameModes;
     [SerializeField] SceneLoader _sceneLoader;
     [SerializeField] UnitsManager _unitManager;
-    [SerializeField] BoolVariable _areInputsEnabled;
+    public BoolVariable ArePlayersFreezed;
+
+    public string playerNickname;
 
     void Awake(){
         if(Instance == null){
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // UpdateState(GameState.InGame);
         SetGameMode(0);
         UpdateState(GameState.MainMenu);     //-->uncomment on release
         // SetInitialState();                          //-->comment on release
@@ -45,12 +50,23 @@ public class GameManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 Time.timeScale = 0;
+                UnlockMouse();
                 break;
             case GameState.InGame:
                 Time.timeScale = 1;
+                LockMouse();
                 break;
             case GameState.PauseMenu:
                 Time.timeScale = 1;
+                UnlockMouse();
+                break;
+            case GameState.CreateGameMenu:
+                Time.timeScale = 0;
+                UnlockMouse();
+                break;
+            case GameState.SelectTeamMenu:
+                Time.timeScale = 1;
+                UnlockMouse();
                 break;
             default:
                 break;
@@ -75,6 +91,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetInGame(){
+        UpdateState(GameState.InGame);
+    }
+
     public void ExitGame(float delay){
         this.Invoke(() => Application.Quit(),delay);
     }
@@ -84,6 +104,14 @@ public class GameManager : MonoBehaviour
         _sceneLoader.LoadScene(Maps[CreateGameData.map].mapName);
         // this.Invoke(() => _unitManager.RespawnUnits(),5f);
         // InstantiatePlayer(0.5f);
+    }
+
+    public void NewGameRandomMap(){
+        _unitManager.RemoveUnits();
+        _sceneLoader.ExitScene(0);
+        int randomMap = Random.Range(1,Maps.Length);
+        _sceneLoader.LoadScene(Maps[randomMap].mapName);
+        // UpdateState(GameState.SelectTeamMenu);
     }
 
     public void ResumeGame(float delay){
@@ -121,10 +149,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void FreezeTeams(){
-        _areInputsEnabled.Value = false;
+        ArePlayersFreezed.Value = true;
     }
 
     public void UnfreezeTeams(){
-        _areInputsEnabled.Value = true;
+        ArePlayersFreezed.Value = false;
     }
 }

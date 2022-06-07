@@ -10,8 +10,8 @@ public class OnTriggerWithLayer : MonoBehaviour
     public UnityEvent OnTriggerStayEvent;
     public UnityEvent OnTriggerExitEvent;
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.layer == _layer){
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.layer == _layer){
             OnTriggerEnterEvent?.Invoke();
         }
     }

@@ -23,8 +23,12 @@ public class UnitAcelerationMovement : UnitMovement
         _forceDirection = new Vector3(Direction.normalized.x,0f,Direction.normalized.y) * MovementForce.Value;
         _forceDirection = transform.TransformDirection(_forceDirection);        //world to local
         _rb.AddForce(_forceDirection,ForceMode.Impulse);
+        if(_forceDirection == Vector3.zero){
+            _rb.velocity = new Vector3(0f,_rb.velocity.y,0f);
+        }
         _forceDirection = Vector3.zero;
         ClampVelocity();
+
     }
 
     void ClampVelocity()

@@ -662,6 +662,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4341530168419432839}
+        m_TargetAssemblyTypeName: RagdollDeath, Assembly-CSharp
+        m_MethodName: ActiveRagdoll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   HasBeenDestructed: 0
 --- !u!114 &4341530168419432839
 MonoBehaviour:
@@ -678,6 +690,7 @@ MonoBehaviour:
   _movementCollider: {fileID: 5997144909632689050}
   _movementRigidbody: {fileID: 5997144909632689054}
   _animatorObject: {fileID: 3368817400886817947}
+  inputs: {fileID: 0}
   _ragdollParts:
   - {fileID: 3368817400886817927}
   - {fileID: 3368817400886818033}
@@ -744,6 +757,8 @@ MonoBehaviour:
   _playerStatus: {fileID: 5997144909632689053}
   _actionMapNumber: 0
   _actionNumber: 0
+  AreInputsEnabled: {fileID: 0}
+  ArePlayersFreezed: {fileID: 0}
   UnitMovement: {fileID: 5997144909632689052}
 --- !u!114 &5997144909758469204
 MonoBehaviour:

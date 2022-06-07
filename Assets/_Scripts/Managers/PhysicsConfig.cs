@@ -11,6 +11,7 @@ public class PhysicsConfig : MonoBehaviour
     //MovementCollider = 8
     //Bullet = 9
     //Weapon = 10
+    //Piece of something = 11
 
     private void Awake() {
         Physics.IgnoreLayerCollision(6,6,true);
@@ -20,5 +21,6 @@ public class PhysicsConfig : MonoBehaviour
         Physics.IgnoreLayerCollision(9,8,true);
         Physics.IgnoreLayerCollision(9,9,true);
         Physics.IgnoreLayerCollision(9,10,true);
+        Physics.IgnoreLayerCollision(11,11,true);
     }
 }

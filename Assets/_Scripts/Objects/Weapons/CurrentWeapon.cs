@@ -5,24 +5,32 @@ using UnityEngine.Events;
 
 public class CurrentWeapon : MonoBehaviour
 {
+    public SightRadius SightRadius;
     public UnityEvent OnShoot;
-    public UnityEvent OnReload;
+    public UnityEvent OnReloadStart;
+    public UnityEvent OnReloadFinish;
 
     public void SingleShoot(){
-        if(GetComponentInChildren<Gun>())
-            GetComponentInChildren<Gun>().Shoot();
+        if(GetComponentInChildren<RangeWeapon>()){
+            GetComponentInChildren<RangeWeapon>().Shoot();
+            // OnShoot?.Invoke();
+        }
     }
 
     public void AutomaticShoot(){
-        Gun gun = GetComponentInChildren<Gun>();
+        RangeWeapon gun = GetComponentInChildren<RangeWeapon>();
         if(gun){
-            if(gun.WeaponData.type == WeaponType.Rifle)
+            if(gun.WeaponData.type == WeaponType.Rifle){
                 gun.Shoot();
+                // OnShoot?.Invoke();
+            }
         }
     }
 
     public void Reload(){
-        if(GetComponentInChildren<Gun>())
-            GetComponentInChildren<Gun>().Reload();
+        if(GetComponentInChildren<RangeWeapon>()){
+            GetComponentInChildren<RangeWeapon>().Reload();
+            // OnReload?.Invoke();
+        }
     }
 }

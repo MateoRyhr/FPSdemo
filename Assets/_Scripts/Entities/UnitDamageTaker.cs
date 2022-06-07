@@ -18,12 +18,12 @@ public class UnitDamageTaker : DamageTaker
     //     CanTakeDamage = true;
     // }
 
-    public override void TakeDamage(float damage,Vector3 contactPoint){
+    public override void TakeDamage(float damage,Vector3 contactPoint, GameObject entityDamageDealer){
         // if(CanTakeDamage){
             // CanTakeDamage = false;
             // DamageEffect.position = contactPoint;
             // DamageEvent.Invoke();
-            _unitHealth.TakeDamage(damage * _damageMultiplier.Value,contactPoint);
+            _unitHealth.TakeDamage(damage * _damageMultiplier.Value,contactPoint,entityDamageDealer);
             // _health -= damage;
             // if(_health <= 0) DestructionEvent.Invoke();
             // this.Invoke(() => CanTakeDamage = true,0.01f);

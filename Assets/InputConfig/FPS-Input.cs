@@ -119,26 +119,35 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""PreviousWeapon"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""89216e42-9be3-44ac-b39b-1e9550753fee"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""AxisDeadzone(min=1.401298E-45,max=1)"",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""NextWeapon"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""fbb80970-03ef-4bb1-a921-ec8ebbe7039d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""AxisDeadzone(max=-1)"",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""DropWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""3655cdc3-5c7f-4b4c-9d2d-dfe86b5520d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowBoards"",
+                    ""type"": ""Button"",
+                    ""id"": ""293fcd03-0933-4fb2-b3ff-d2674eff5ce4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -371,7 +380,7 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
                     ""id"": ""f3ef4824-7449-49d5-83fc-d0fb2c5c7aa8"",
                     ""path"": ""<Mouse>/backButton"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""AxisDeadzone(min=1.401298E-45,max=1)"",
                     ""groups"": """",
                     ""action"": ""PreviousWeapon"",
                     ""isComposite"": false,
@@ -380,9 +389,9 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d8cf1278-4ef1-4378-9caa-8b9bd6f51c18"",
-                    ""path"": ""<Mouse>/forwardButton"",
+                    ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""AxisDeadzone(min=1.401298E-45,max=-1)"",
                     ""groups"": """",
                     ""action"": ""NextWeapon"",
                     ""isComposite"": false,
@@ -409,6 +418,28 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
                     ""action"": ""DropWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db5658b6-a18b-4075-9169-867abb248e2a"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowBoards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecff8138-c4ef-49a4-b6a8-9252970f1edc"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowBoards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -430,6 +461,7 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
         m_Player_PreviousWeapon = m_Player.FindAction("PreviousWeapon", throwIfNotFound: true);
         m_Player_NextWeapon = m_Player.FindAction("NextWeapon", throwIfNotFound: true);
         m_Player_DropWeapon = m_Player.FindAction("DropWeapon", throwIfNotFound: true);
+        m_Player_ShowBoards = m_Player.FindAction("ShowBoards", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -502,6 +534,7 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PreviousWeapon;
     private readonly InputAction m_Player_NextWeapon;
     private readonly InputAction m_Player_DropWeapon;
+    private readonly InputAction m_Player_ShowBoards;
     public struct PlayerActions
     {
         private @FPSInput m_Wrapper;
@@ -519,6 +552,7 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
         public InputAction @PreviousWeapon => m_Wrapper.m_Player_PreviousWeapon;
         public InputAction @NextWeapon => m_Wrapper.m_Player_NextWeapon;
         public InputAction @DropWeapon => m_Wrapper.m_Player_DropWeapon;
+        public InputAction @ShowBoards => m_Wrapper.m_Player_ShowBoards;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -567,6 +601,9 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
                 @DropWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropWeapon;
                 @DropWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropWeapon;
                 @DropWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDropWeapon;
+                @ShowBoards.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowBoards;
+                @ShowBoards.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowBoards;
+                @ShowBoards.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowBoards;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -610,6 +647,9 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
                 @DropWeapon.started += instance.OnDropWeapon;
                 @DropWeapon.performed += instance.OnDropWeapon;
                 @DropWeapon.canceled += instance.OnDropWeapon;
+                @ShowBoards.started += instance.OnShowBoards;
+                @ShowBoards.performed += instance.OnShowBoards;
+                @ShowBoards.canceled += instance.OnShowBoards;
             }
         }
     }
@@ -629,5 +669,6 @@ public partial class @FPSInput : IInputActionCollection2, IDisposable
         void OnPreviousWeapon(InputAction.CallbackContext context);
         void OnNextWeapon(InputAction.CallbackContext context);
         void OnDropWeapon(InputAction.CallbackContext context);
+        void OnShowBoards(InputAction.CallbackContext context);
     }
 }

@@ -1,60 +1,125 @@
 fileFormatVersion: 2
 guid: 15fc4d7b13207df44b7428e7e3047fa5
-timeCreated: 1539762020
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: AK74U_Mag
-    100004: AK74U_Mag2
-    100006: AK74U_Trigger
-    100008: AK_74U_Sight
-    100010: AK_74U_Silencer
-    400000: //RootNode
-    400002: AK74U_Mag
-    400004: AK74U_Mag2
-    400006: AK74U_Trigger
-    400008: AK_74U_Sight
-    400010: AK_74U_Silencer
-    2300000: //RootNode
-    2300002: AK74U_Mag
-    2300004: AK74U_Mag2
-    2300006: AK74U_Trigger
-    2300008: AK_74U_Sight
-    2300010: AK_74U_Silencer
-    3300000: //RootNode
-    3300002: AK74U_Mag
-    3300004: AK74U_Mag2
-    3300006: AK74U_Trigger
-    3300008: AK_74U_Sight
-    3300010: AK_74U_Silencer
-    4300000: AK74U
-    4300002: AK74U_Mag2
-    4300004: AK74U_Trigger
-    4300006: AK_74U_Silencer
-    4300008: AK74U_Mag
-    4300010: AK_74U_Sight
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: AK74U_Mag
+  - first:
+      1: 100004
+    second: AK74U_Mag2
+  - first:
+      1: 100006
+    second: AK74U_Trigger
+  - first:
+      1: 100008
+    second: AK_74U_Sight
+  - first:
+      1: 100010
+    second: AK_74U_Silencer
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: AK74U_Mag
+  - first:
+      4: 400004
+    second: AK74U_Mag2
+  - first:
+      4: 400006
+    second: AK74U_Trigger
+  - first:
+      4: 400008
+    second: AK_74U_Sight
+  - first:
+      4: 400010
+    second: AK_74U_Silencer
+  - first:
+      23: 2300000
+    second: //RootNode
+  - first:
+      23: 2300002
+    second: AK74U_Mag
+  - first:
+      23: 2300004
+    second: AK74U_Mag2
+  - first:
+      23: 2300006
+    second: AK74U_Trigger
+  - first:
+      23: 2300008
+    second: AK_74U_Sight
+  - first:
+      23: 2300010
+    second: AK_74U_Silencer
+  - first:
+      33: 3300000
+    second: //RootNode
+  - first:
+      33: 3300002
+    second: AK74U_Mag
+  - first:
+      33: 3300004
+    second: AK74U_Mag2
+  - first:
+      33: 3300006
+    second: AK74U_Trigger
+  - first:
+      33: 3300008
+    second: AK_74U_Sight
+  - first:
+      33: 3300010
+    second: AK_74U_Silencer
+  - first:
+      43: 4300000
+    second: AK74U
+  - first:
+      43: 4300002
+    second: AK74U_Mag2
+  - first:
+      43: 4300004
+    second: AK74U_Trigger
+  - first:
+      43: 4300006
+    second: AK_74U_Silencer
+  - first:
+      43: 4300008
+    second: AK74U_Mag
+  - first:
+      43: 4300010
+    second: AK_74U_Sight
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -62,25 +127,45 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -90,11 +175,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

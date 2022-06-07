@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CreateGameData
   m_EditorClassIdentifier: 
   redTeamBotsQuantity: 1
-  blueTeamBotsQuantity: 3
+  blueTeamBotsQuantity: 1
   totalRounds: 3
-  map: 1
-  buyTime: 5
+  map: 2
+  buyTime: 0
   inGame: 0

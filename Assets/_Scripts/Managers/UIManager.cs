@@ -11,7 +11,8 @@ public class UIManager : MonoBehaviour
     // public GameObject HostGame;
     public GameObject PauseMenu;
     public GameObject SelectTeamMenu;
-    public GameObject HUD;
+    public GameObject Boards;
+    // public GameObject HUD;
 
     private void Awake() {
         if(Instance == null){
@@ -48,13 +49,13 @@ public class UIManager : MonoBehaviour
 
     #region HUD
 
-    public void EnableHUD(float delay){
-        this.Invoke(() => HUD.SetActive(true),delay);
-    }
+    // public void EnableHUD(float delay){
+    //     this.Invoke(() => HUD.SetActive(true),delay);
+    // }
 
-    public void DisableHUD(float delay){
-        this.Invoke(() => HUD.SetActive(false),delay);
-    }
+    // public void DisableHUD(float delay){
+    //     this.Invoke(() => HUD.SetActive(false),delay);
+    // }
 
     #endregion
 
@@ -78,6 +79,18 @@ public class UIManager : MonoBehaviour
 
     public void DisableSelectTeamMenu(float delay){
         this.Invoke(() => SelectTeamMenu.SetActive(false),delay);
+    }
+
+    #endregion
+
+    #region Boards
+
+    public void EnableBoards(float delay){
+        this.Invoke(() => Boards.SetActive(true),delay);
+    }
+
+    public void DisableBoards(float delay){
+        this.Invoke(() => Boards.SetActive(false),delay);
     }
 
     #endregion

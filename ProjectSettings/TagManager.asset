@@ -16,8 +16,8 @@ TagManager:
   - MovementCollider
   - Bullet
   - Weapon
-  - 
-  - 
+  - PieceAttached
+  - PieceBroken
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: HUD
+    uniqueID: 1596009831
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
